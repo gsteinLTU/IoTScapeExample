@@ -1,14 +1,17 @@
 import { Request } from "./request";
 
+/**
+ * Service definition for example service
+ */
 export const definition = {
     "MetaScapeTest": {
         "service": {
             "description": ["Example service for MetaScape development",
                             "Includes ping, hello, add, and timer functions"], 
-            "externalDocumentation": "",
-            "termsOfService": "",
-            "contact": "",
-            "license": "",
+            "externalDocumentation": "n/a",
+            "termsOfService": "n/a",
+            "contact": "gstein@ltu.edu",
+            "license": "MIT",
             "version": "1",
         },
         "methods": {
@@ -83,10 +86,19 @@ export const definition = {
     }
 };
 
+/**
+ * Returns the string \"pong\"
+ * @param {Request} req  
+ */
 export function ping(req: Request) {
     req.respond("pong");
 }
 
+/**
+ * Greets a user, possibly by name
+ * @param {Request} req 
+ * @param {string=} name Name to greet
+ */
 export function hello(req: Request, name?:string) {
     if(typeof name == "undefined"){
         req.respond("Hello!");
@@ -95,10 +107,21 @@ export function hello(req: Request, name?:string) {
     }
 }
 
+/**
+ * Add two numbers
+ * @param {Request} req 
+ * @param {Number} a First number 
+ * @param {Number} b Second number 
+ */
 export function add(req: Request, a:number, b:number) {
     req.respond(a + b);
 }
 
+/**
+ * Send a response after a delay
+ * @param {Request} req 
+ * @param {Number} msec Amount of time to wait, in ms
+ */
 export function timer(req: Request, msec:number) {
     setTimeout(() => {
         req.respondEvent("timer");
