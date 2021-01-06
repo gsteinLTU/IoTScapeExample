@@ -87,6 +87,11 @@ export const definition = {
 };
 
 /**
+ * Name of this service
+ */
+export var ServiceName = "MetaScapeTest";
+
+/**
  * Returns the string \"pong\"
  * @param {Request} req  
  */

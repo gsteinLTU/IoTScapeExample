@@ -1,4 +1,5 @@
 import { RemoteInfo, Socket } from "dgram";
+import { ServiceName } from "./rpcs";
 
 /**
  * Represents information about a remote call
@@ -29,7 +30,6 @@ export class Request {
      */
     respond(...args : any[]){
         var response = {
-            "id": this.callID,
             "response": [
                 ...args
             ],
@@ -44,7 +44,6 @@ export class Request {
      */
     respondError(err: string){
         var response = {
-            "id": this.callID,
             "error": err,
         };
 
@@ -58,7 +57,6 @@ export class Request {
      */
     respondEvent(type: string, ...args : any[]){
         var response = {
-            "id": this.callID,
             "event": {
                 "type": type,
                 "args": args
@@ -73,6 +71,11 @@ export class Request {
      * @param {Object} response Response object to send as JSON string
      */
     _send(response: Object){
+        response = {
+            id: this.callID,
+            service: ServiceName,
+            ...response
+        };
         this.socket.send(JSON.stringify(response), this.rinfo.port, this.rinfo.address);
     }
 }
