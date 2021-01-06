@@ -77,7 +77,7 @@ export const definition = {
 
             },
         },
-        "messages": {
+        "events": {
             "timer": {
                 "params": {
                 },
