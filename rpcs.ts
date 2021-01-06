@@ -5,6 +5,7 @@ import { Request } from "./request";
  */
 export const definition = {
     "MetaScapeTest": {
+        "id": 1,
         "service": {
             "description": ["Example service for MetaScape development",
                             "Includes ping, hello, add, and timer functions"], 
@@ -90,6 +91,9 @@ export const definition = {
  * Name of this service
  */
 export var ServiceName = "MetaScapeTest";
+
+// Set ID
+definition.MetaScapeTest.id = Math.floor(Math.random() * 100000);
 
 /**
  * Returns the string \"pong\"
