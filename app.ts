@@ -4,7 +4,9 @@ config();
 import { add, hello, ping, timer, definition } from "./rpcs";
 import { Server } from "./server";
 
-
 const server = new Server();
 
-server.announce("localhost", 1975, JSON.stringify(definition));
+const host = process.env.METASCAPE_SERVER ?? "localhost";
+const port = Number.parseInt(process.env.METASCAPE_PORT ?? "1975");
+
+server.announce(host, port, JSON.stringify(definition));

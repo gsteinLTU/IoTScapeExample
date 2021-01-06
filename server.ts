@@ -17,6 +17,7 @@ export class Server {
      * @param definition Definition of service to announce to server
      */
     announce(host: string, port: number, definition: string) {
+        this.logger(`Announcing to ${host}:${port}`);
         this.socket.send(definition, port, host);
     }
 
@@ -53,7 +54,7 @@ export class Server {
 
         this.socket.on('listening', () => {
             const address = this.socket.address();
-            this.logger(`server listening ${address.address}:${address.port}`);
+            this.logger(`server listening on ${address.address}:${address.port}`);
         });
 
         this.socket.bind(port);
