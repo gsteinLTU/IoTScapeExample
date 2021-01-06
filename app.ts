@@ -7,4 +7,4 @@ import { Server } from "./server";
 
 const server = new Server();
 
-server.announce("localhost", 1975, definition);
+server.announce("localhost", 1975, JSON.stringify(definition));

@@ -14,8 +14,8 @@ export class Server {
      * @param port Port of server to announce service to
      * @param definition Definition of service to announce to server
      */
-    announce(host: string, port: number, definition: object) {
-
+    announce(host: string, port: number, definition: string) {
+        this.socket.send(definition, port, host);
     }
 
     constructor(port?:number) {
