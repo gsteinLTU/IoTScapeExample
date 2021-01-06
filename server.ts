@@ -1,5 +1,7 @@
 import dgram from 'dgram';
 import debug from 'debug';
+import { Request } from './request';
+import { RPCs } from './rpcs';
 
 /**
  * Example server for running a MetaScape service
@@ -28,6 +30,25 @@ export class Server {
 
         this.socket.on('message', (msg, rinfo) => {
             this.logger(`server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
+            
+            let request;
+            try {
+                request = new Request(msg.toString(), this.socket, rinfo);
+
+                // Check that function exists 
+                if(Object.keys(RPCs).includes(request.funcName)){
+                    RPCs[request.funcName](request, ...request.funcParams);
+                } else {
+                    throw new Error("RPC not found");
+                }
+            } catch (error) {
+                this.logger("Failed to handle call: " + error);
+                
+                if(request !== undefined){
+                    request.respondError(error.toString());
+                }
+            }
+            
         });
 
         this.socket.on('listening', () => {

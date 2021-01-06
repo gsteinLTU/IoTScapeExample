@@ -128,3 +128,12 @@ export function timer(req: Request, msec:number) {
     }, msec);
 }
 
+/**
+ * List of RPCs
+ */
+export var RPCs : {[key: string]: Function} = {
+    ping,
+    hello,
+    add,
+    timer
+};
