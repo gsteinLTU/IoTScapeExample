@@ -18,8 +18,7 @@ export const definition = {
         "methods": {
             "ping": {
                 "documentation": "Returns the string \"pong\".",
-                "params": {
-                },
+                "params": [],
                 "returns": {
                     "documentation": "Pong",
                     "type": ["void"]
@@ -27,14 +26,14 @@ export const definition = {
             },
             "hello": {
                 "documentation": "Greets a user, possibly by name",
-                "params": {
-                    "name": {
-                        "order": 1,
+                "params": [
+                    {
+                        "name": "name",
                         "documentation": ["Name to greet"],
                         "type": "string",
                         "optional": true
-                    },
-                },
+                    }
+                ],
                 "returns": {
                     "documentation": "Greeting",
                     "type": ["string"]
@@ -42,20 +41,20 @@ export const definition = {
             },
             "add": {
                 "documentation": "Add two numbers",
-                "params": {
-                    "a": {
-                        "order": 1,
+                "params": [
+                    {
+                        "name": "a",
                         "documentation": "First number",
                         "type": "number",
                         "optional": false
                     },
-                    "b": {
-                        "order": 2,
+                    {
+                        "name": "b",
                         "documentation": "Second number",
                         "type": "number",
                         "optional": false
                     },
-                },
+                ],
                 "returns": {
                     "documentation": "Sum of a and b",
                     "type": ["number"]
@@ -63,14 +62,14 @@ export const definition = {
             },
             "timer": {
                 "documentation": ["Send a response after a delay"],
-                "params": {
-                    "msec": {
-                        "order": 1,
+                "params": [
+                    {
+                        "name": "msec",
                         "documentation": "Amount of time to wait, in ms",
                         "type": "number",
                         "optional": false
                     },
-                },
+                ],
                 "returns": {
                     "documentation": "Response after delay",
                     "type": ["event timer"],
@@ -80,8 +79,7 @@ export const definition = {
         },
         "events": {
             "timer": {
-                "params": {
-                },
+                "params": [],
             }
         }
     }
