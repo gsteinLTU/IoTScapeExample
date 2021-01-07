@@ -1,5 +1,5 @@
 import { RemoteInfo, Socket } from "dgram";
-import { ServiceName } from "./rpcs";
+import { definition, ServiceName } from "./rpcs";
 
 /**
  * Represents information about a remote call
@@ -55,7 +55,8 @@ export class Request {
      * @param type Name of event type
      * @param args Value(s) associated with event
      */
-    respondEvent(type: string, ...args : any[]){
+    respondEvent(type: string, args : Object = {}){
+
         var response = {
             "event": {
                 "type": type,
@@ -72,7 +73,8 @@ export class Request {
      */
     _send(response: Object){
         response = {
-            id: this.callID,
+            id: definition.MetaScapeTest.id,
+            request: this.callID,
             service: ServiceName,
             ...response
         };
