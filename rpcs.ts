@@ -7,8 +7,7 @@ export const definition = {
     "MetaScapeTest": {
         "id": 1,
         "service": {
-            "description": ["Example service for MetaScape development",
-                            "Includes ping, hello, add, and timer functions"], 
+            "description": "Example service for MetaScape development.\nIncludes ping, hello, add, and timer functions", 
             "externalDocumentation": "n/a",
             "termsOfService": "n/a",
             "contact": "gstein@ltu.edu",
@@ -29,7 +28,7 @@ export const definition = {
                 "params": [
                     {
                         "name": "name",
-                        "documentation": ["Name to greet"],
+                        "documentation": "Name to greet",
                         "type": "string",
                         "optional": true
                     }
@@ -61,7 +60,7 @@ export const definition = {
                 }
             },
             "timer": {
-                "documentation": ["Send a response after a delay"],
+                "documentation": "Send a response after a delay",
                 "params": [
                     {
                         "name": "msec",
