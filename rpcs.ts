@@ -15,12 +15,20 @@ export const definition = {
             "version": "1",
         },
         "methods": {
+            "nop": {
+                "documentation": "Does nothing",
+                "params": [],
+                "returns": {
+                    "documentation": "",
+                    "type": ["void"]
+                }
+            },
             "ping": {
                 "documentation": "Returns the string \"pong\".",
                 "params": [],
                 "returns": {
                     "documentation": "Pong",
-                    "type": ["void"]
+                    "type": ["string"]
                 }
             },
             "hello": {
@@ -92,6 +100,10 @@ export var ServiceName = "MetaScapeTest";
 // Set ID
 definition.MetaScapeTest.id = Math.floor(Math.random() * 100000);
 
+export function nop(req: Request) {
+    
+}
+
 /**
  * Returns the string \"pong\"
  * @param {Request} req  
@@ -138,6 +150,7 @@ export function timer(req: Request, msec:number) {
  * List of RPCs
  */
 export var RPCs : {[key: string]: Function} = {
+    nop,
     ping,
     hello,
     add,
