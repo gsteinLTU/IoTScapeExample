@@ -4,7 +4,7 @@ import { Request } from './request';
 import { RPCs } from './rpcs';
 
 /**
- * Example server for running a MetaScape service
+ * Example server for running a IoTScape service
  */
 export class Server {
     logger = debug('Server');

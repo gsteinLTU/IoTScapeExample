@@ -73,7 +73,7 @@ export class Request {
      */
     _send(response: Object){
         response = {
-            id: definition.MetaScapeTest.id,
+            id: definition.IoTScapeTest.id,
             request: this.callID,
             service: ServiceName,
             ...response

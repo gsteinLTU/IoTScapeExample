@@ -1,7 +1,7 @@
 {
-  "name": "MetaScapeExample",
+  "name": "IoTScapeExample",
   "version": "1.0.0",
-  "description": "Example project for connecting to MetaScape",
+  "description": "Example project for connecting to IoTScape",
   "main": "app.js",
   "author": "Gordon Stein",
   "license": "MIT",

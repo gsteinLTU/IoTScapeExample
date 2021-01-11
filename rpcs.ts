@@ -4,10 +4,10 @@ import { Request } from "./request";
  * Service definition for example service
  */
 export const definition = {
-    "MetaScapeTest": {
+    "IoTScapeTest": {
         "id": 1,
         "service": {
-            "description": "Example service for MetaScape development.\nIncludes ping, hello, add, and timer functions", 
+            "description": "Example service for IoTScape development.\nIncludes ping, hello, add, and timer functions", 
             "externalDocumentation": "n/a",
             "termsOfService": "n/a",
             "contact": "gstein@ltu.edu",
@@ -95,13 +95,24 @@ export const definition = {
 /**
  * Name of this service
  */
-export var ServiceName = "MetaScapeTest";
+export var ServiceName = "IoTScapeTest";
 
 // Set ID
-definition.MetaScapeTest.id = Math.floor(Math.random() * 100000);
+definition.IoTScapeTest.id = Math.floor(Math.random() * 100000);
 
+/**
+ * Does absolutely nothing
+ * @param {Request} req
+ */
 export function nop(req: Request) {
     
+}
+
+/**
+ * IoTScape required function
+ */
+export function heartbeat(req: Request) {
+    req.respond(true);
 }
 
 /**
@@ -154,5 +165,6 @@ export var RPCs : {[key: string]: Function} = {
     ping,
     hello,
     add,
-    timer
+    timer,
+    heartbeat
 };
