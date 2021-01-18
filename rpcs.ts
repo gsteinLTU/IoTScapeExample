@@ -129,10 +129,10 @@ export function ping(req: Request) {
  * @param {string=} name Name to greet
  */
 export function hello(req: Request, name?:string) {
-    if(typeof name == "undefined"){
-        req.respond("Hello!");
-    } else {
+    if(typeof name === "string" && name !== ""){
         req.respond(`Hello, ${name}!`);
+    } else {
+        req.respond("Hello!");
     }
 }
 
