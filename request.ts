@@ -73,7 +73,7 @@ export class Request {
      */
     _send(response: Object){
         response = {
-            id: definition.IoTScapeTest.id,
+            id: definition[ServiceName].id,
             request: this.callID,
             service: ServiceName,
             ...response

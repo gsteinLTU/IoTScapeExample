@@ -1,6 +1,11 @@
 import { Request } from "./request";
 
 /**
+ * Name of this service
+ */
+export const ServiceName = "IoTScapeTest";
+
+/**
  * Service definition for example service
  */
 export const definition = {
@@ -109,15 +114,10 @@ export const definition = {
             }
         }
     }
-};
-
-/**
- * Name of this service
- */
-export var ServiceName = "IoTScapeTest";
+} as Record<string, any>;
 
 // Set ID
-definition.IoTScapeTest.id = Math.floor(Math.random() * 100000);
+definition[ServiceName].id = Math.floor(Math.random() * 100000);
 
 /**
  * Does absolutely nothing
