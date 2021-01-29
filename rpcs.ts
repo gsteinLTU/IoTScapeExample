@@ -83,10 +83,29 @@ export const definition = {
                 }
 
             },
+            "countdown": {
+                "documentation": "Send a series of event messages",
+                "params": [
+                    {
+                        "name": "start",
+                        "documentation": "Number to start counting down from",
+                        "type": "number",
+                        "optional": false
+                    },
+                ],
+                "returns": {
+                    "documentation": "Response after delay",
+                    "type": ["event timer"],
+                }
+
+            },
         },
         "events": {
             "timer": {
                 "params": [],
+            },
+            "countdown": {
+                "params": ["value"],
             }
         }
     }
@@ -128,7 +147,7 @@ export function ping(req: Request) {
  * @param {Request} req 
  * @param {string=} name Name to greet
  */
-export function hello(req: Request, name?:string) {
+export function hello(req: Request, name?: string) {
     if(typeof name === "string" && name !== ""){
         req.respond(`Hello, ${name}!`);
     } else {
@@ -142,7 +161,7 @@ export function hello(req: Request, name?:string) {
  * @param {Number} a First number 
  * @param {Number} b Second number 
  */
-export function add(req: Request, a:number, b:number) {
+export function add(req: Request, a: number, b: number) {
     req.respond(a + b);
 }
 
@@ -151,10 +170,31 @@ export function add(req: Request, a:number, b:number) {
  * @param {Request} req 
  * @param {Number} msec Amount of time to wait, in ms
  */
-export function timer(req: Request, msec:number) {
+export function timer(req: Request, msec: number) {
     setTimeout(() => {
         req.respondEvent("timer");
     }, msec);
+}
+
+/**
+ * Send a series of event messages counting from a number to zero
+ * @param {Request} req 
+ * @param {Number} start Number to count down from, max 10
+ */
+export function countdown(req: Request, start: number) {
+
+    if(start <= 0){
+        return;
+    }
+
+    if(start >= 10){
+        start = 10;
+    }
+    
+    setTimeout(() => {
+        req.respondEvent("countdown", {value: start.toString()});
+        countdown(req, start - 1);
+    }, 1000);
 }
 
 /**
@@ -166,5 +206,6 @@ export var RPCs : {[key: string]: Function} = {
     hello,
     add,
     timer,
+    countdown,
     heartbeat
 };
